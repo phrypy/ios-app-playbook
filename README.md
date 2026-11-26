@@ -2,17 +2,11 @@
 
 ![iOS App Playbook. Build apps that feel at home on iOS, shown with a SwiftUI Collections screen.](./assets/ios-app-playbook-banner.png)
 
-An open-source iOS playbook for intermediate solo builders.
+Open-source skills, guides, and checklists for solo iOS developers who build with SwiftUI and ship to the App Store.
 
-**Who it's for:** Solo founders and indie iOS developers who can already build an app but want sharper judgment on SwiftUI product UI, native design, App Store quality, and shipping.
-
-**What it is:** A structured system of agent skills, guides, checklists, and examples organized around three outcomes: Design, Polish, Ship.
-
-**What it is not:** A beginner Swift tutorial. A pile of random prompts. An enterprise architecture spec.
+**[Build](./skills/ios-app-architecture/SKILL.md) · [Polish](./guides/how-to-make-swiftui-apps-feel-native.md) · [Ship](./guides/how-to-ship-and-launch-an-ios-update.md) · [Update for iOS 27](./guides/ios-27-update-playbook.md) · [Install skills](#install)**
 
 Authored by [@phrypy](https://instagram.com/phrypy) · Published at [phrypy/ios-app-playbook](https://github.com/phrypy/ios-app-playbook)
-
-**Updating an existing app for iOS 27?** Check your Xcode and SDK setup, test iPhone Duo layouts, and prepare for the April 2027 submission changes with the [iOS 27 Update Playbook](./guides/ios-27-update-playbook.md).
 
 ---
 
@@ -27,12 +21,11 @@ One end-to-end path for building and shipping a polished iOS app:
 | 3. Native Feel | [ios-hig-design](./skills/ios-hig-design/) + [guide](./guides/how-to-make-swiftui-apps-feel-native.md) |
 | 4. Accessibility & Quality | [ios-accessibility-design-review](./skills/ios-accessibility-design-review/) + [checklist](./checklists/accessibility-review.md) |
 | 5. Polish | [ios-interface-polish](./skills/ios-interface-polish/) |
-| 6. App Store Preflight | [app-store-readiness](./skills/app-store-readiness/) + [checklist](./checklists/app-store-preflight.md) |
-| 7. Launch | [solo-ios-release-flow](./skills/solo-ios-release-flow/) |
-| 8. Real Screenshots | [app-store-screenshot-pipeline](./skills/app-store-screenshot-pipeline/) |
-| 9. Featuring | [app-store-featuring-nomination](./skills/app-store-featuring-nomination/) |
+| 6. Real Screenshots | [app-store-screenshot-pipeline](./skills/app-store-screenshot-pipeline/) |
+| 7. Archive & Upload | [solo-ios-release-flow](./skills/solo-ios-release-flow/) |
+| 8. App Store Preflight | [app-store-readiness](./skills/app-store-readiness/) + [checklist](./checklists/app-store-preflight.md) |
 
-Use the full path for new apps. Jump to any stage when iterating on something specific, or [preview the four starting points](./assets/ios-app-playbook-preview.png).
+Use the full path for new apps or jump to the stage you need. Plan [App Store featuring](./skills/app-store-featuring-nomination/) ahead of release if relevant. [Preview the four starting points](./assets/ios-app-playbook-preview.png).
 
 ---
 
@@ -50,7 +43,7 @@ references/   Canonical Apple links worth keeping close
 
 ## Skills
 
-Reusable agent skills. Copy into your agent's skills directory and invoke by name.
+Choose a skill for the task you’re working on, then follow the [install instructions](#install) for your agent.
 
 **Foundation**
 - [ios-app-architecture](./skills/ios-app-architecture/) — Structure a solo-friendly SwiftUI codebase with clean boundaries
@@ -126,9 +119,14 @@ Fast review passes. Use before shipping, submitting, or after a major refactor.
 
 ## Install
 
+### Google Antigravity
+
+Open the playbook checkout in Antigravity. Its [discovery manifest](./.agents/skills.json) loads the skills from the checkout. To use them while working on your own app, add the checkout as a workspace folder. [Antigravity setup and discovery checks](./docs/adoption-guide.md#google-antigravity)
+
 ### Claude Code
 
 ```bash
+mkdir -p ~/.claude/skills
 cp -r skills/ios-app-architecture ~/.claude/skills/
 ```
 
@@ -137,6 +135,7 @@ Repeat for each skill you want available. Then invoke by name in your session.
 ### Codex
 
 ```bash
+mkdir -p ~/.codex/skills
 cp -r skills/ios-app-architecture ~/.codex/skills/
 ```
 

@@ -14,15 +14,9 @@ Do them in order. Do not start metadata before the build is real, and do not sub
 
 App Store Connect rejects duplicate build numbers. If you upload, find a problem, fix it, and upload again, bump the build number first.
 
-## 2. Preflight
+## 2. Start the Preflight
 
-Run the preflight before you spend time on metadata.
-
-- use the [App Store preflight](../checklists/app-store-preflight.md)
-- confirm the privacy manifest is complete
-- confirm the export compliance answers match the build
-
-A failed preflight here is cheap. A failed review is a week.
+Use the [App Store preflight](../checklists/app-store-preflight.md) to check the evidence you have before preparing metadata. Inspect the privacy manifests and rehearse reviewer access on the candidate. Finish checks that require the archive or App Store Connect in step 7.
 
 ## 3. Real Screenshots
 
@@ -59,12 +53,13 @@ An apex domain that 307-redirects to www is fine, it resolves 200. Prefer the ca
 - archive in release conditions, then upload
 - wait for processing to finish before you touch the version
 
-## 7. Attach And Submit
+## 7. Attach, Verify, and Submit
 
 - attach the processed build to the version
 - fill review-detail contact info and any sign-in notes
-- confirm App Privacy is published, not just drafted
-- submit
+- confirm App Privacy is published
+- finish the [App Store preflight](../checklists/app-store-preflight.md) against the archive, selected build, screenshots, listing, and review notes
+- submit once the applicable checks pass
 
 If the build is not attached or App Privacy is unpublished, submission stalls quietly. Check both.
 

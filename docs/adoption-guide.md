@@ -14,6 +14,38 @@ Start with:
 
 Add `ios-hig-design`, `app-store-readiness`, and `solo-ios-release-flow` once the product is approaching polish and ship.
 
+## Google Antigravity
+
+Open the playbook checkout in Antigravity to discover its skills. The checked-in [manifest](../.agents/skills.json) points to `skills/` in the same checkout. Keep the checkout available so the skills can open linked guides, checklists, and scripts. [Google's discovery guide](https://antigravity.google/docs/customization-discovery/#discovery-manifests)
+
+When working on your own app, use **Add Folder** in the Antigravity App to add the playbook checkout to the app's project. With the CLI, start from your app directory and add the checkout to the workspace. [Google's project setup](https://antigravity.google/docs/getting-started/) · [CLI discovery paths](https://antigravity.google/docs/customization-discovery/#workspace-folders-and-parent-directories)
+
+```sh
+cd "/absolute/path/to/your-ios-app"
+agy --add-dir "/absolute/path/to/ios-app-playbook"
+```
+
+Check that `app-store-readiness` comes from the playbook checkout. In the App, look under your project's **Customizations**. In the standalone IDE, use **Customizations** in the agent side panel. In the CLI, run `/skills` and open the skill's details. Use `/skills reload` after changing the setup. [Google's discovery checks](https://antigravity.google/docs/customization-discovery/#check-what-antigravity-loaded) · [IDE skill locations](https://antigravity.google/docs/skills/#antigravity-ide-skill-locations)
+
+In the App or CLI, try `/app-store-readiness` and ask for a read-only summary of its linked App Store preflight checklist. This checks that the agent can open the resource as well as discover the skill. [Google's skill invocation guide](https://antigravity.google/docs/skills/#skills-by-surface)
+
+### Personal setup
+
+To make selected skills available across projects, use `~/.gemini/config/skills.json`. Add the entry to your existing `entries` array if you already have a manifest. Use the absolute path to your checkout. [Google's shared customization guide](https://antigravity.google/docs/customization-discovery/#share-customizations-across-projects)
+
+```json
+{
+  "entries": [
+    {
+      "path": "/absolute/path/to/ios-app-playbook/skills",
+      "include_only": ["ios-app-architecture", "swiftui-product-ui", "app-store-readiness"]
+    }
+  ]
+}
+```
+
+If linked files are outside the active workspace, add the playbook checkout as a project folder so the agent can read them in the same session. [Google's file access settings](https://antigravity.google/docs/permissions/)
+
 ## Best Fit Projects
 
 These skills work best for:

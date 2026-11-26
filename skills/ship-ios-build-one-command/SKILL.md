@@ -5,7 +5,7 @@ description: Use when you want to archive, sign, export, and upload an iOS App S
 
 # Ship iOS Build, One Command
 
-The last mile, automated. One command takes HEAD to a build attached on App Store Connect.
+The helper archives the current app project and can attach the uploaded build in App Store Connect.
 
 This is the machine. `solo-ios-release-flow` is the judgment. Decide there, run here.
 
@@ -19,18 +19,20 @@ No submit on purpose. Uploading and attaching is reversible. Submitting is not. 
 
 ## The Tool
 
-The runnable script is [reference/archive-ios-build.sh](reference/archive-ios-build.sh). It is battle-tested and generic. Run it from the project dir; it auto-detects the rest.
+Find [archive-ios-build.sh](reference/archive-ios-build.sh) next to the loaded `SKILL.md` in its `reference/` directory. Use its absolute path from the app's project directory so project and scheme detection run in the right place.
 
-```
-reference/archive-ios-build.sh --dry-run     # detect project/scheme/team/version/build, print the plan, run nothing
-reference/archive-ios-build.sh               # archive, export, upload, attach
-reference/archive-ios-build.sh --no-upload   # stop after the signed .ipa
-reference/archive-ios-build.sh --submit      # also submit for review (explicit)
+```sh
+archive_script="/absolute/path/to/ship-ios-build-one-command/reference/archive-ios-build.sh"
+"$archive_script" --help
+"$archive_script" --dry-run     # detect settings and print the plan without archiving or uploading
+"$archive_script"               # archive, export, upload, attach
+"$archive_script" --no-upload   # stop after the signed .ipa
+"$archive_script" --submit      # also submit for review (explicit)
 ```
 
 Auto-detected: `.xcworkspace`/`.xcodeproj`, scheme, `DEVELOPMENT_TEAM`, `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION`, `PRODUCT_BUNDLE_IDENTIFIER`, and the ASC app id resolved from the bundle id.
 
-Always run `--dry-run` first. The archive reflects HEAD. Confirm the branch, version, and build before you commit minutes to a build.
+Run `--dry-run` first and confirm the project, working tree, version, and build number. Dry run can look up the app in App Store Connect when planning an upload.
 
 ## Signing Model
 

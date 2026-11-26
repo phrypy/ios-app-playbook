@@ -19,7 +19,7 @@ contains skills/ios-hig-design/SKILL.md '## Use This As The Baseline'
 contains skills/swiftui-product-ui/SKILL.md '## Owns'
 contains skills/ios-interface-polish/SKILL.md 'Use after the screen works'
 contains skills/app-store-readiness/SKILL.md 'It does not archive, upload, or release the build.'
-contains skills/solo-ios-release-flow/SKILL.md 'Run `app-store-readiness` before the upload step.'
+contains skills/solo-ios-release-flow/SKILL.md 'complete `app-store-readiness` on the selected build before submitting'
 contains skills/ios-app-store-optimization/SKILL.md 'It does not design or produce the assets.'
 
 printf 'Skill boundaries verified.\n'

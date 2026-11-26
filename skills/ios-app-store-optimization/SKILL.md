@@ -1,6 +1,6 @@
 ---
 name: ios-app-store-optimization
-description: Use when shaping the conversion strategy for a real iOS App Store listing: positioning, metadata, the listing promise, and the message each visual asset must convey.
+description: "Use when shaping the conversion strategy for a real iOS App Store listing: positioning, metadata, the listing promise, and the message each visual asset must convey."
 ---
 
 # iOS App Store Optimization

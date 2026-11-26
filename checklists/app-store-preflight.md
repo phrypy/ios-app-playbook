@@ -1,6 +1,6 @@
 # App Store Preflight
 
-Record the version and build number, date, and evidence for each applicable check. Use **Pass**, **Fail**, **Unchecked**, or **N/A with a reason**. Resolve failed and unchecked submission requirements before submitting.
+Start the checks during release preparation and finish them against the archive and selected build before submitting. Record the version and build number, date, and evidence for each applicable check. Use **Pass**, **Fail**, **Unchecked**, or **N/A with a reason**. Resolve failed and unchecked submission requirements before submitting.
 
 ## Reviewer Access and App Privacy
 
