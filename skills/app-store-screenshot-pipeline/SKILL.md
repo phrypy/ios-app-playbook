@@ -28,13 +28,12 @@ if ProcessInfo.processInfo.environment["APP_EXPORT_SHOTS"] == "1" {
 }
 ```
 
-Inside that path, rasterize specific views with SwiftUI `ImageRenderer` (or `UIGraphicsImageRenderer`) and write PNGs into the app's Documents directory.
+Inside that path, rasterize specific views with SwiftUI `ImageRenderer` (or `UIGraphicsImageRenderer`) and write PNGs into the app's Documents directory. Capture the running build when system chrome or the current device layout is part of the story, especially for iPhone Duo.
 
 Trigger it from a booted simulator and pass the env with the `SIMCTL_CHILD_` prefix:
 
 ```sh
-xcrun simctl launch <device> <bundleid>
-# with: SIMCTL_CHILD_APP_EXPORT_SHOTS=1
+SIMCTL_CHILD_APP_EXPORT_SHOTS=1 xcrun simctl launch "$SIMULATOR_UDID" "$APP_BUNDLE_ID"
 ```
 
 Then pull the PNGs out of the app's data container.
@@ -43,46 +42,44 @@ Then pull the PNGs out of the app's data container.
 
 These are the ones that cost real time. Read them before you start.
 
-- `ImageRenderer` cannot rasterize a `NavigationStack`. You get a yellow box with a red prohibition symbol, not your view.
-- it cannot rasterize `ScrollView` content either. That renders blank.
-- a `Picker` with `.pickerStyle(.menu)` renders the same placeholder.
-- so give yourself a chromeless render path: a plain `VStack`, no `NavigationStack`, no `ScrollView`, and present pickers as sheets rather than inline. Render the content, not the chrome.
+- `ImageRenderer` can produce placeholders for platform-backed controls and containers. If a navigation container, scroll view, or menu picker fails offscreen, export its plain SwiftUI content or capture the running screen. [ImageRenderer documentation](https://developer.apple.com/documentation/swiftui/imagerenderer)
 - `simctl install` changes the app's data container id. Call `xcrun simctl get_app_container <device> <bundleid> data` after install, never before, or you will read the wrong folder.
 - pass env to the launched app with the `SIMCTL_CHILD_` prefix. Without it the variable is set on `simctl`, not on your app.
 - render at scale 2 to 3, and set `isOpaque = false` when you need transparency.
-- App Store app icon PNGs must be 1024x1024 with no alpha channel. Strip alpha on the icon specifically, even if the rest of your renders keep it.
+- transparent intermediate PNGs are useful for composition. Flatten all final submission screenshots onto an opaque background.
 - when inspecting renders as an agent, downscale first with `sips` before viewing. Very large PNGs fail to display.
 
 ## Stage 2: Compose To App Store Sizes
 
 Use a small Next.js plus Playwright generator. Lay out each slide in the browser using the real PNGs from stage one, then capture each slide at literal device pixel dimensions.
 
-Required sizes:
+Review the required display sizes for the app's platform and locale in App Store Connect. Apple's current specifications include a medium Dynamic Island iPhone set and a 13-inch iPad set for apps that support iPad. [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications)
 
-- iPhone 6.9": 1320x2868
-- iPad 13": 2064x2752
+For iPhone Duo, capture the actual outer and inner layouts. The portrait sizes are **1398 × 2034** for the outer display and **2007 × 2853** for the inner display. Use the transposed dimensions for landscape. Apple's April 2027 requirement applies to apps using the iOS 27.1 SDK or later. [iPhone Duo preparation](https://developer.apple.com/iphone-duo/prepare/) · [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications)
 
 Capture at exact pixels. Do not capture at a CSS size and scale up, or text and device frames go soft.
 
 One sync trap: if a Node export script keeps its own hardcoded slug or slide list, it will silently skip any slide you add to the manifest but forget to add to the script. Either drive the export from the manifest, or treat the two lists as one thing you change together. A new slide that never exports is easy to miss until upload.
 
-## Upload With asc
+## Validate and Upload
 
-Use `asc` and replace the set so the listing is exactly what you intend, with no leftover duplicates.
+Check which display sets your installed `asc` supports. This example validates and previews an upload for the medium Dynamic Island display. Set `VERSION_LOCALIZATION_ID` to the App Store version localization ID and use the folder containing that locale's images.
 
 ```sh
-asc screenshots upload --replace --device-type APP_IPHONE_69 --path metadata/screenshots
-asc screenshots upload --replace --device-type APP_IPAD_PRO_3GEN_129 --path metadata/screenshots
+asc screenshots sizes --all
+asc screenshots validate --device-type APP_IPHONE_61 --path metadata/screenshots/iphone-medium/en-US
+asc screenshots upload --version-localization "$VERSION_LOCALIZATION_ID" \
+  --device-type APP_IPHONE_61 --path metadata/screenshots/iphone-medium/en-US --dry-run
 ```
 
-`--path` must point at the parent folder whose immediate children are locale directories. For example `metadata/screenshots` with a child `en-US/`, not the locale folder itself.
+For a display missing from your CLI, upload its set in App Store Connect. Check the resulting order, locale, and dimensions before submitting. If replacing an existing set with `asc`, include `--replace` in the dry run and confirm the replacement set before applying it.
 
 ## Avoid
 
 - div and CSS mockups standing in for real UI
-- rasterizing a `NavigationStack`, `ScrollView`, or menu `Picker` and wondering why it is blank or a yellow box
+- ignoring blank or placeholder output from offscreen renders
 - reading the data container path before install
 - forgetting the `SIMCTL_CHILD_` prefix and assuming the env reached the app
-- shipping a 1024x1024 icon that still carries an alpha channel
+- uploading transparent screenshots or reusing a capture from a different layout
 - a manifest slide that never reaches the exporter because a hardcoded list went stale
-- uploading without `--replace` and leaving stale screenshots in the set
+- leaving screenshots from a previous version in the set

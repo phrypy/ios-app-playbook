@@ -58,6 +58,8 @@ If a layout fights the notch, Dynamic Island, tab bar, or home indicator, it is 
 - avoid hamburger navigation on iPhone unless the product has an unusual constraint
 - every screen needs an obvious exit path
 
+On iOS 27, inspect system tab and navigation bars before adding custom backgrounds or offsets. On iPhone Duo, test vertical bars with the iOS 27.1 SDK or later. Keep custom controls inside safe areas and check any overlap with the fold and camera regions. [iPhone Duo HIG](https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo) · [iOS 27 Update Playbook](../../guides/ios-27-update-playbook.md)
+
 ## Typography
 
 - use semantic text styles when possible

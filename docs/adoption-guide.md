@@ -4,6 +4,8 @@
 
 Do not import every skill into every project by default.
 
+If you're upgrading an existing app, begin with the [iOS 27 Update Playbook](../guides/ios-27-update-playbook.md) and pick the skills for the parts of the app you need to review.
+
 Start with:
 
 - `ios-app-architecture`

@@ -1,6 +1,6 @@
 # iOS App Playbook
 
-![iOS App Playbook Banner](./assets/ios-app-playbook-banner.svg)
+![iOS App Playbook. Build apps that feel at home on iOS, shown with a SwiftUI Collections screen.](./assets/ios-app-playbook-banner.png)
 
 An open-source iOS playbook for intermediate solo builders.
 
@@ -10,7 +10,9 @@ An open-source iOS playbook for intermediate solo builders.
 
 **What it is not:** A beginner Swift tutorial. A pile of random prompts. An enterprise architecture spec.
 
-Authored by [@phrypy](https://instagram.com/phrypy) · Published at [khbyong/ios-app-playbook](https://github.com/khbyong/ios-app-playbook)
+Authored by [@phrypy](https://instagram.com/phrypy) · Published at [phrypy/ios-app-playbook](https://github.com/phrypy/ios-app-playbook)
+
+**Updating an existing app for iOS 27?** Check your Xcode and SDK setup, test iPhone Duo layouts, and prepare for the April 2027 submission changes with the [iOS 27 Update Playbook](./guides/ios-27-update-playbook.md).
 
 ---
 
@@ -30,7 +32,7 @@ One end-to-end path for building and shipping a polished iOS app:
 | 8. Real Screenshots | [app-store-screenshot-pipeline](./skills/app-store-screenshot-pipeline/) |
 | 9. Featuring | [app-store-featuring-nomination](./skills/app-store-featuring-nomination/) |
 
-Use the full path for new apps. Jump to any stage when iterating on something specific.
+Use the full path for new apps. Jump to any stage when iterating on something specific, or [preview the four starting points](./assets/ios-app-playbook-preview.png).
 
 ---
 
@@ -90,6 +92,7 @@ Human-readable playbooks. Read when you're shaping a specific decision.
 - [How To Design An iOS App Icon That Gets Tapped](./guides/how-to-design-an-ios-app-icon-that-gets-tapped.md)
 - [How To Prep An Indie iOS App For App Store Review](./guides/how-to-prep-an-indie-ios-app-for-app-store-review.md)
 - [How To Ship And Launch An iOS Update](./guides/how-to-ship-and-launch-an-ios-update.md)
+- [iOS 27 Update Playbook](./guides/ios-27-update-playbook.md) — Xcode 27.2, SwiftUI and UIKit migration, iPhone Duo, and App Store submission
 
 ---
 
@@ -117,7 +120,7 @@ Fast review passes. Use before shipping, submitting, or after a major refactor.
 
 ## References
 
-- [Official Apple iOS Design Links](./references/official-ios-design-links.md)
+- [Official Apple iOS Design and Release Links](./references/official-ios-design-links.md)
 
 ---
 

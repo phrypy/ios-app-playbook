@@ -1,5 +1,7 @@
 # How To Ship And Launch An iOS Update
 
+When moving to the iOS 27 SDK, use the [iOS 27 Update Playbook](./ios-27-update-playbook.md) to plan your build, device tests, and App Store assets.
+
 Shipping an update is two jobs: cut a clean build, then give it a fair launch.
 
 Do them in order. Do not start metadata before the build is real, and do not submit before the links resolve.
@@ -16,15 +18,15 @@ App Store Connect rejects duplicate build numbers. If you upload, find a problem
 
 Run the preflight before you spend time on metadata.
 
-- see ./checklists/app-store-preflight.md
+- use the [App Store preflight](../checklists/app-store-preflight.md)
 - confirm the privacy manifest is complete
-- confirm export-compliance is answered (most apps use only standard encryption)
+- confirm the export compliance answers match the build
 
 A failed preflight here is cheap. A failed review is a week.
 
 ## 3. Real Screenshots
 
-- see ./skills/app-store-screenshot-pipeline/
+- use the [screenshot pipeline](../skills/app-store-screenshot-pipeline/SKILL.md) to prepare current device and locale sets
 - shoot the actual app, not a mockup of what you wish it did
 - reviewers and users both read screenshots as a promise
 
@@ -34,8 +36,7 @@ Edit metadata with the asc CLI, not by hand in the dashboard.
 
 - subtitle, keywords, promotional text, description, what's new
 - respect each field's character limit
-- omit empty fields, `asc validate` rejects empty strings
-- validate before apply
+- omit empty fields and run `asc metadata validate --dir ./metadata` before applying changes
 - dry-run first, then apply
 
 Tight and honest beats keyword-stuffed. The subtitle and first description line do most of the work.
@@ -54,7 +55,7 @@ An apex domain that 307-redirects to www is fine, it resolves 200. Prefer the ca
 
 ## 6. Archive And Upload
 
-- see ./skills/ship-ios-build-one-command/
+- see [ship-ios-build-one-command](../skills/ship-ios-build-one-command/SKILL.md)
 - archive in release conditions, then upload
 - wait for processing to finish before you touch the version
 
@@ -69,7 +70,7 @@ If the build is not attached or App Privacy is unpublished, submission stalls qu
 
 ## 8. Nominate For Featuring
 
-- see ./skills/app-store-featuring-nomination/
+- see [app-store-featuring-nomination](../skills/app-store-featuring-nomination/SKILL.md)
 - nominate a few weeks ahead of the release date when you can
 - editorial wants a clear story and real screenshots, both of which you already have
 

@@ -17,6 +17,8 @@ Ship with a repeatable loop. Do not improvise the final mile.
 6. archive and upload
 7. check processing, screenshots, and review notes
 
+When moving to the iOS 27 SDK, record the Xcode and SDK versions used for the archive. Test the release candidate on iOS 27 and the oldest supported OS, including upgrades with existing data and any feature fallbacks. [iOS 27 Update Playbook](../../guides/ios-27-update-playbook.md)
+
 Run `app-store-readiness` before the upload step. That skill is the go/no-go audit; this skill owns the order of operations. Use `ship-ios-build-one-command` only for the archive, sign, export, and upload step.
 
 ## Before You Upload

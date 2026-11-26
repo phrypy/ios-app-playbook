@@ -14,6 +14,11 @@ Adaptability should feel natural, not like a stretched phone UI.
 - keep readable width under control
 - avoid edge-to-edge text walls on iPad
 - use available space to improve clarity, not just fit more widgets
+- with the iOS 27.1 SDK or later, test iPhone Duo outer and inner displays, partial folds, and Split View
+- let system bars change axis and lay out custom content using window geometry, safe areas, and applicable reserved regions
+- preserve selection, draft input, and task state while moving between compact and expanded layouts
+
+Use `NavigationSplitView` for navigation hierarchy where it fits. Consider `ArrangementView` on iOS 27.1 and later for a primary/secondary content pair. Check which content stays visible in compact poses and review the API's container nesting guidance. [ArrangementView](https://developer.apple.com/documentation/swiftui/arrangementview) · [iOS 27 layout and fallback example](../../guides/ios-27-update-playbook.md#3-test-real-resizing-on-iphone-and-ipad)
 
 ## Review Questions
 

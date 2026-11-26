@@ -14,6 +14,8 @@ Users should understand where they are, how they got there, and how to leave.
 - sheets for focused temporary tasks
 - settings grouped by user mental model
 
+Give toolbar items both a useful title and a symbol so they work in a vertical bar or overflow menu. On iOS 27, check which actions stay reachable under compression. On iPhone Duo, verify Back, Close, Done, and secondary actions in both bar orientations. [iPhone Duo HIG](https://developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo)
+
 ## Use
 
 - tabs when destinations are peers

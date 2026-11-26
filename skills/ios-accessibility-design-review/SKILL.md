@@ -24,4 +24,6 @@ Accessibility is part of product quality, not a separate pass.
 4. check labels on important controls
 5. review motion intensity
 
+On layouts with vertical bars or overflow, use VoiceOver to find and invoke the same primary actions before and after resizing. Check that users can reach essential swipe and reorder actions through visible controls or accessibility actions. Use the tested tasks to assess any Accessibility Nutrition Labels the app publishes. [Accessibility checklist](../../checklists/accessibility-review.md)
+
 If the flow only works for visually precise, fully sighted, calm conditions, it is not ready.

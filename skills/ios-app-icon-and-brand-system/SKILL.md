@@ -31,6 +31,8 @@ Review in this order:
 - simple geometry beats tiny detail
 - bold color direction beats muddy gradients
 - test the icon at realistic home-screen and App Store sizes
+- use the current Apple templates and preview the icon across the Home Screen appearances your target OS versions offer. [Apple design resources](https://developer.apple.com/design/resources/)
+- for a layered Liquid Glass icon, use Icon Composer and verify how Xcode's result looks on the oldest OS you support. [Building an icon with Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer)
 
 ## Brand System Rules
 

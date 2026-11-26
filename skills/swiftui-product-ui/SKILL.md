@@ -44,6 +44,8 @@ Use specialist skills for navigation structure, forms, first-run, trust-sensitiv
 - use dedicated subviews when a section has distinct intent
 - avoid computed view helpers that hide too much logic
 - keep state ownership obvious
+- when building with Xcode 27, review `@State` initialization and any generic result builders that stop compiling. [SwiftUI migration technote](https://developer.apple.com/documentation/technotes/tn3211-resolving-swiftui-source-incompatibilities-for-state-and-contentbuilder)
+- use the new iOS 27 toolbar, swipe, and reorder APIs when they simplify a flow. Preserve an accessible fallback on earlier OS versions. [iOS 27 API choices](../../guides/ios-27-update-playbook.md#4-choose-swiftui-apis-for-specific-flows)
 
 ## Polish Checklist
 

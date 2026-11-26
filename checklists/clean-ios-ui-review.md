@@ -10,3 +10,6 @@
 - Empty, loading, success, and error states exist
 - Settings labels explain meaning and consequence
 - No screen feels like a transplanted web page
+- On iOS 27, system bars, materials, and typography remain legible in light, dark, and high-contrast settings
+- Toolbars keep the primary action reachable and give overflow items meaningful titles
+- Key controls stay reachable and drafts survive resizing, including iPhone Duo folds and iPad window changes where applicable

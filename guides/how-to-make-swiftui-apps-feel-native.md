@@ -31,6 +31,7 @@ It does not mean copying Apple's exact visual style everywhere. It means the app
 - support dark mode and large text as first-class requirements
 - use sheets, lists, menus, and swipe actions where they fit naturally
 - prefer native controls unless a custom pattern is clearly better
+- with the iOS 27.1 SDK or later, check how system bars shift between horizontal and vertical placement on iPhone Duo
 
 ## A Fast Native-Feel Pass
 
@@ -50,6 +51,9 @@ Does the app look intentional in dark mode, or just inverted? Do large Dynamic T
 
 **5. Check state coverage.**
 Does every screen have a loading state, an empty state, and an error state? Are any of them blank?
+
+**6. Check live resizing on iOS 27.**
+Can a user move between compact and expanded layouts without losing a draft, selection, or primary action? Does custom chrome stay clear of safe areas and reserved regions? See the [iOS 27 update playbook](./ios-27-update-playbook.md).
 
 ## High-Leverage Fixes
 
